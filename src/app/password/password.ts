@@ -69,11 +69,9 @@ import { matFormFieldControl } from '../../forms/matFormFieldControl';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordComponent {
-  private readonly formBuilder = inject(NonNullableFormBuilder);
-
   protected readonly disabled = model(false);
 
-  protected readonly form = this.formBuilder.group({
+  protected readonly form = inject(NonNullableFormBuilder).group({
     password: ['', { updateOn: 'blur' }],
     showPassword: [false],
   });
@@ -84,7 +82,7 @@ export class PasswordComponent {
 
   protected readonly passwordElement = viewChild.required<MatInput, ElementRef<HTMLInputElement>>(
     MatInput,
-    { read: ElementRef },
+    { read: ElementRef }
   );
 
   protected readonly required = input(false, { transform: booleanAttribute });
@@ -119,7 +117,7 @@ export class PasswordComponent {
         pairwise(),
         filter(([previous, next]) => previous !== next),
         map(([, value]) => value),
-        takeUntilDestroyed(inject(DestroyRef)),
+        takeUntilDestroyed(inject(DestroyRef))
       )
       .subscribe((value) => void passwordChange.emit(value));
   }

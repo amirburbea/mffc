@@ -29,9 +29,8 @@ import { PasswordComponent } from './password/password';
 })
 export class App {
   private readonly document = inject(DOCUMENT);
-  private readonly formBuilder = inject(NonNullableFormBuilder);
 
-  protected readonly form = this.formBuilder.group({
+  protected readonly form = inject(NonNullableFormBuilder).group({
     password: ['', Validators.required],
   });
 
