@@ -1,0 +1,21 @@
+<button mat-button (click)="toggleDarkMode()">
+  <mat-icon>{{ isDark() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  <span>Switch to {{ isDark() ? 'light' : 'dark' }} mode</span>
+</button>
+
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Login Form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>MatLabel</mat-label>
+        <app-password formControlName="password" />
+        <mat-error>The password is required.</mat-error>
+      </mat-form-field>
+      <span>Password: {{ password() }}</span>
+      <span>Touched (external): {{ passwordTouched() }}</span>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,13 @@
+:host {
+  mat-card {
+    margin: 16px;
+    form {
+      display: flex;
+      flex-flow: column nowrap;
+
+      mat-form-field {
+        margin: 8px;
+      }
+    }
+  }
+}
